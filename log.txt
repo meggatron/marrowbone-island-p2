@@ -12,3 +12,5 @@ Entered forest
 Entered trail
 Entered cliff
 Entered dock
+Entered dock
+Entered trail
