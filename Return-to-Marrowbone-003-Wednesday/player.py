@@ -1,7 +1,8 @@
-def intro():
+def intro(gui):
     with open("intro.txt", "r") as f:
         for line in f:
-            print(line.strip())
-    name = input("What is your name, adventurer? > ")
-    print(f"Welcome, {name}. Your quest begins now...\n")
+            gui.display(line.strip())
+
+    name = gui.get_input("what is your name, adventurer? > ")
+    gui.display(f"welcome, {name}. your quest begins now...\n")
     return name
