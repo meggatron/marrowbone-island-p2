@@ -2,6 +2,9 @@
 
 **Python-based text adventure game, iterative versions for teaching.**
 
+-First version developed in [Marrowbone Island](https://github.com/meggatron/marrowbone-island), the game expands here into a graphical and modular version.
+
+
 **NOTE, coming soon: requirements.txt for installing pygame**
 
 ## Versions
