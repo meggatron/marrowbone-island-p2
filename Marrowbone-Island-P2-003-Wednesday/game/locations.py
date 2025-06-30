@@ -1,35 +1,24 @@
-#nested logic
-#operators
-
 import random
 import time
 
 weather = ["foggy", "rainy", "sunny"]
 inventory = []
 
-def intro():
-    with open("intro.txt", "r") as f:
-        for line in f:
-            print(line.strip())
-    name = input("What is your name, adventurer? > ")
-    print(f"Welcome, {name}. Your quest begins now...")
-    return name
-
 def log_room(location):
-    with open("log.txt", "a") as log:
+    with open("../assets/log.txt", "a") as log:
         log.write(f"Entered {location}\n")
 
-def dock():
+def dock(player_name):
     log_room("dock")
     print(f"\nYou are on a {random.choice(weather)} dock. Paths lead north to a trail.")
     move = input("Where do you go? > ").lower()
-    if move == "go north" or move == "north":
+    if move in ["go north", "north"]:
         return 'trail'
     else:
         print("Try typing 'go north'.")
         return 'dock'
 
-def trail():
+def trail(player_name):
     log_room("trail")
     print("\nYou begin walking up the trail.")
     for step in range(1, 4):
@@ -37,17 +26,17 @@ def trail():
         time.sleep(0.5)
     print(f"You are on a {random.choice(weather)} trail. Paths lead west into a forest, north to a cliff, or south back to the dock.")
     move = input("Where do you go? > ").lower()
-    if move == "go west" or move == "west":
+    if move in ["go west", "west"]:
         return 'forest'
-    elif move == "go north" or move == "north":
+    elif move in ["go north", "north"]:
         return 'cliff'
-    elif move == "go south" or move == "south":
+    elif move in ["go south", "south"]:
         return 'dock'
     else:
         print("Try 'west', 'north', or 'south'.")
         return 'trail'
 
-def forest():
+def forest(player_name):
     log_room("forest")
     print(f"\nYou step into a {random.choice(weather)} forest. The trees are thick and mossy.")
     if "map" not in inventory:
@@ -59,17 +48,15 @@ def forest():
             print("You leave the map in the tree hollow.")
     else:
         print("The forest is quiet. You've already taken the map.")
-
     print("You can go east to return to the trail.")
     move = input("Where do you go? > ").lower()
-    if move == "go east" or move == "east":
+    if move in ["go east", "east"]:
         return 'trail'
     else:
         print("Try typing 'east'.")
         return 'forest'
 
-def cliff():
-    global player_name
+def cliff(player_name):
     log_room("cliff")
     print(f"\nYou reach the edge of a {random.choice(weather)} cliff. A strange chest is buried here, half-covered in moss and time.")
     if "map" in inventory:
@@ -90,15 +77,11 @@ def cliff():
         print("The chest is here... but without the map, its meaning is lost.")
         print("You can go south to return to the trail.")
         move = input("Where do you go? > ").lower()
-        if move == "go south" or move == "south":
+        if move in ["go south", "south"]:
             return 'trail'
         else:
             print("Try typing 'south'.")
             return 'cliff'
-
-# Start game
-player_name = intro()
-current_location = 'dock'
 
 locations = {
     'dock': dock,
@@ -106,6 +89,3 @@ locations = {
     'forest': forest,
     'cliff': cliff
 }
-
-while current_location != 'end':
-    current_location = locations[current_location]()

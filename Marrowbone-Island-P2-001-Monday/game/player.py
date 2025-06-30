@@ -1,5 +1,5 @@
 def intro():
-    with open("intro.txt", "r") as f:
+    with open("../assets/intro.txt", "r") as f:
         for line in f:
             print(line.strip())
     name = input("What is your name, adventurer? > ")
