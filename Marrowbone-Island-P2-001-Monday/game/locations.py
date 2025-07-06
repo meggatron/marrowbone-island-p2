@@ -5,7 +5,7 @@ weather = ["foggy", "rainy", "sunny"]
 inventory = []
 
 def log_room(location):
-    with open("../assets/log.txt", "a") as log:
+    with open("assets/log.txt", "a") as log:
         log.write(f"Entered {location}\n")
 
 def dock(player_name):

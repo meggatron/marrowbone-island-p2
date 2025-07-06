@@ -1,3 +1,6 @@
+#nested logic
+#operators
+
 import random
 import time
 

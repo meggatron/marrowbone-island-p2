@@ -2,14 +2,16 @@ import pygame
 
 # define the shrimp class
 class Shrimp:
-    def __init__(self, name="Sebastian"):
+    def __init__(self, name="Sebastian", mood="reflective"):
         self.name = name
+        self.mood = mood
         self.job = "giant shrimp living in a laundry room in Bremerton"
 
     def intro_line(self):
         return [
             f"Hi, my name is {self.name}.",
-            f"I am a giant shrimp living in a laundry room in Bremerton.",
+            f"I am a {self.job}.",
+            f"Today I feel {self.mood}.",
             f"Here is your haiku, friend."
         ]
 
@@ -20,15 +22,17 @@ class Shrimp:
             f"   the sea is {adjective}"
         ]
 
-# create the shrimp
-shrimp = Shrimp()
-
-# get words from the player
+# get info from the player
+name = input("give the shrimp a name > ")
+mood = input("how does the shrimp feel today? > ")
 noun = input("give the shrimp a noun > ")
-verb = input("give the shrimp a verb ending in -ing> ")
+verb = input("give the shrimp a verb ending in -ing > ")
 adjective = input("describe the sea in one word > ")
 
-# call methods on the shrimp object to show how classes group related behaviors
+# create the shrimp
+shrimp = Shrimp(name, mood)
+
+# combine the lines
 lines = shrimp.intro_line() + shrimp.recite_poem(noun, verb, adjective)
 
 # set up pygame
