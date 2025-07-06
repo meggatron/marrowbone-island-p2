@@ -1,4 +1,42 @@
-from . import player
+from game import player
+
+def backpack():
+    while True:
+        print("\nYou open your backpack. What would you like to do?")
+        print("1. View sorted inventory")
+        print("2. Search for an item")
+        print("3. Close backpack")
+
+        choice = input("> ").strip()
+
+        if choice == "1":
+            show_inventory(player.inventory)
+        elif choice == "2":
+            item = input("What item are you looking for? ").strip()
+            if search_inventory(player.inventory, item):
+                print(f"You have the {item}.")
+            else:
+                print(f"The {item} isn’t here.")
+        elif choice == "3":
+            print("You close your backpack.")
+            return "dock"  # or return to previous location
+        else:
+            print("The backpack rustles... but offers no answer.")
+
+def show_inventory(inventory):
+    if not inventory:
+        print("Your backpack is empty.")
+    else:
+        print("Your inventory:")
+        for item in sorted(inventory):
+            print(f" - {item}")
+
+def search_inventory(inventory, item_name):
+    for item in inventory:
+        if item.lower() == item_name.lower():
+            return True
+    return False
+
 
 def dock():
     print("\nYou arrive at the Dock.")
@@ -92,4 +130,5 @@ locations = {
     "deep_reef": deep_reef,
     "cliff_face": cliff_face,
     "x_marks_spot": x_marks_spot,
+    "backpack": backpack
     }
