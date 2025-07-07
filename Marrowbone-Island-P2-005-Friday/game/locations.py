@@ -1,5 +1,7 @@
+import pygame
 from game import player
 from game import gui
+from game.sprite import NPC
 
 def backpack():
     while True:
@@ -80,13 +82,33 @@ def cave():
         gui.display("Sasquatch is here as before.")
 
 def tide_pools():
-    gui.display("\nYou reach the Tide Pools.")
-    if "Loowit" not in player.npcs:
-        player.npcs.append("Loowit")
-        player.gifts.append("underwater breathing")
-        gui.display("You meet Loowit, the orca, who grants you underwater breathing!")
-    else:
-        gui.display("Loowit is here as before.")
+    import pygame
+    from game.sprite import NPC
+
+    screen = pygame.display.get_surface()
+    clock = pygame.time.Clock()
+
+    loowit = NPC(400, 300)
+    all_sprites = pygame.sprite.Group(loowit)
+
+    showing = True
+    while showing:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:  # press Enter to continue
+                    showing = False
+
+        screen.fill((100, 200, 180))
+        all_sprites.update()
+        all_sprites.draw(screen)
+        pygame.display.flip()
+        clock.tick(30)
+
+    return "continue"
+
 
 def shipwreck():
     gui.display("\nYou find a Shipwreck.")
