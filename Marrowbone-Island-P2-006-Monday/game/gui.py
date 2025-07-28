@@ -1,12 +1,10 @@
 import pygame
 from game import player
 
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
-font = pygame.font.SysFont("Arial", 24)
-
 def draw_status():
-    # Draw persistent status bar at the top of the screen.
+    screen = pygame.display.get_surface()
+    font = pygame.font.SysFont("Arial", 24)
+
     screen.fill((10, 20, 40))  # Clear screen before drawing
 
     inventory_text = f"Inventory: {', '.join(player.inventory) if player.inventory else 'None'}"
@@ -18,7 +16,9 @@ def draw_status():
         screen.blit(line_surface, (20, 5 + i * 25))
 
 def display(text):
-    """Display main text, preserving status bar."""
+    screen = pygame.display.get_surface()
+    font = pygame.font.SysFont("Arial", 24)
+
     if isinstance(text, str):
         lines = text.strip().split('\n')
     else:
@@ -31,7 +31,9 @@ def display(text):
     pygame.display.flip()
 
 def get_input(prompt):
-    """Prompt user for input, preserving status bar."""
+    screen = pygame.display.get_surface()
+    font = pygame.font.SysFont("Arial", 24)
+
     if isinstance(prompt, str):
         lines = prompt.strip().split('\n')
     else:
@@ -70,7 +72,6 @@ def get_input(prompt):
     return input_text.strip()
 
 def pause(ms):
-    """Pause but keep the window responsive."""
     clock = pygame.time.Clock()
     elapsed = 0
     while elapsed < ms:
