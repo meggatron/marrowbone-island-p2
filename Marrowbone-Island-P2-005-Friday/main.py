@@ -12,7 +12,7 @@ all_sprites = pygame.sprite.Group(loowit)
 def intro():
     player.player_name = gui.get_input("What is your name, adventurer? ")
     gui.display(f"Welcome, {player.player_name}! Your adventure begins now.")
-    gui.pause(1500)
+    gui.pause(2000)
 
 def main():
     intro()
@@ -23,45 +23,32 @@ def main():
         result = location_func()
 
         if result == "end":
+            gui.display("Thanks for playing!")
+            gui.pause(2000)
             break
 
-        if current_location == "tide_pools":
-            screen.fill((100, 200, 180))
-            all_sprites.update()
-            all_sprites.draw(screen)
-            pygame.display.flip()
+        gui.pause(2000)
 
-            waiting = True
-            while waiting:
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN or event.type == pygame.QUIT:
-                        waiting = False
+        location_lines = [
+            f" - {loc.replace('_', ' ').title()}"
+            for loc in locations.locations if loc != "end"
+        ]
+        prompt = (
+            "Possible locations to go:\n" +
+            "\n".join(location_lines) +
+            "\n\nWhere do you want to go next?"
+        )
+        prompt = prompt.encode("ascii", "ignore").decode()
 
-        location_lines = ["Possible locations to go:"]
-        for loc in locations.locations:
-            if loc != "end":
-                location_lines.append(f" - {loc.replace('_', ' ').title()}")
-        gui.display(location_lines)
-        gui.pause(1500)
-
-        next_location = gui.get_input("Where do you want to go next? ").lower().replace(" ", "_")
+        next_location = gui.get_input(prompt).lower().replace(" ", "_")
+        gui.pause(300)
 
         if next_location in locations.locations and next_location != "end":
             current_location = next_location
         else:
             gui.display("Invalid location. Try again.")
-            gui.pause(1500)
-
-        info_lines = [
-            f"Inventory: {', '.join(player.inventory) if player.inventory else 'None'}",
-            f"NPCs Met: {', '.join(player.npcs) if player.npcs else 'None'}",
-            f"Gifts: {', '.join(player.gifts) if player.gifts else 'None'}"
-        ]
-        gui.display(info_lines)
-        gui.pause(1500)
-
-    gui.display("Thanks for playing!")
-    gui.pause(1500)
+            gui.pause(2000)
 
 if __name__ == "__main__":
+    print("Starting the game...")
     main()
