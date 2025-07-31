@@ -1,8 +1,8 @@
+import time
 from creatures.shrimp import Shrimp
 from creatures.sasquatch import Sasquatch
 from creatures.loowit import Loowit
 from creatures.ghost_pirate import GhostPirate
-
 
 if __name__ == "__main__":
     creatures = [Shrimp(), Sasquatch(), Loowit(), GhostPirate()]
@@ -10,3 +10,4 @@ if __name__ == "__main__":
         print(c.speak())
         print(c.give_gift())
         print("---")
+        time.sleep(2)  
