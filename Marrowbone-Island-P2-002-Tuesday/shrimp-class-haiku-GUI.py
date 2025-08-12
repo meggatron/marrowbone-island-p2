@@ -23,17 +23,17 @@ class Shrimp:
         ]
 
 # get info from the player
-name = input("give the shrimp a name > ")
-mood = input("how does the shrimp feel today? > ")
-noun = input("give the shrimp a noun > ")
-verb = input("give the shrimp a verb ending in -ing > ")
-adjective = input("describe the sea in one word > ")
+shrimp_name = input("give the shrimp a name > ")
+shrimp_mood = input("how does the shrimp feel today? > ")
+poem_noun = input("give the shrimp a noun > ")
+poem_verb = input("give the shrimp a verb ending in -ing > ")
+poem_adj = input("describe the sea in one word > ")
 
 # create the shrimp
-shrimp = Shrimp(name, mood)
+shrimp = Shrimp(shrimp_name, shrimp_mood)
 
 # combine the lines
-lines = shrimp.intro_line() + shrimp.recite_poem(noun, verb, adjective)
+lines = shrimp.intro_line() + shrimp.recite_poem(poem_noun, poem_verb, poem_adj)
 
 # set up pygame
 pygame.init()

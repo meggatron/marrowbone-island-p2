@@ -10,4 +10,4 @@ if __name__ == "__main__":
         print(c.speak())
         print(c.give_gift())
         print("---")
-        time.sleep(2)  
+        time.sleep(2)
