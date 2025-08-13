@@ -1,7 +1,6 @@
 #nested files
 #documentation
 
-
 from game import locations, player
 
 def intro():

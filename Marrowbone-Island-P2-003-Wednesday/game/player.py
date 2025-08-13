@@ -1,9 +1,8 @@
 # game/player.py
 
-# player.py
+from .backpack import Backpack
+
 player_name = ""
-inventory = []
+backpack = Backpack()  # class instance
 npcs = []
 gifts = []
-
-
