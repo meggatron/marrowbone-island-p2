@@ -14,7 +14,7 @@
 [Return-to-Marrowbone-002-Tuesday](../Marrowbone-Island-P2-002-Tuesday)  
 [Return-to-Marrowbone-003-Wednesday](../Marrowbone-Island-P2-003-Wednesday)  
 [Return-to-Marrowbone-004-Thursday](../Marrowbone-Island-P2-004-Thursday)  
-[Return-to-Marrowbone-005-Friday](../Marrowbone-Island-P2-005-Friday)  
+[Return-to-Marrowbone-005-Friday]()  
 
 Return-to-Marrowbone-006-Monday *(not yet started)*  
 Return-to-Marrowbone-007-Tuesday *(not yet started)*  
